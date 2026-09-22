@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Fana Tsehay Pharmaceutical PLC</title>
 
 <style>
@@ -11,11 +10,11 @@
     box-sizing:border-box;
     margin:0;
     padding:0;
-    font-family:Arial,Helvetica,sans-serif;
+    font-family:Arial, sans-serif;
 }
 
 body{
-    background:#f4f5f9;
+    background:#f4f6f9;
     color:#222;
 }
 
@@ -34,12 +33,11 @@ header h1{
 
 header span{
     font-size:14px;
-    opacity:.9;
 }
 
-.container{
+.layout{
     display:flex;
-    min-height:calc(100vh - 65px);
+    min-height:calc(100vh - 64px);
 }
 
 .sidebar{
@@ -51,19 +49,19 @@ header span{
 
 .sidebar button{
     width:100%;
+    padding:13px;
+    margin-bottom:6px;
     border:0;
     background:white;
-    padding:13px;
-    margin-bottom:5px;
     text-align:left;
-    border-radius:6px;
     cursor:pointer;
+    border-radius:7px;
     font-size:15px;
 }
 
 .sidebar button:hover,
 .sidebar button.active{
-    background:#eee7fb;
+    background:#eee5ff;
     color:#5427a8;
     font-weight:bold;
 }
@@ -89,7 +87,7 @@ h2{
 
 .cards{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
     gap:15px;
     margin-bottom:25px;
 }
@@ -98,17 +96,17 @@ h2{
     background:white;
     padding:20px;
     border-radius:10px;
-    box-shadow:0 2px 7px rgba(0,0,0,.08);
+    box-shadow:0 2px 8px #0001;
 }
 
-.card small{
-    color:#777;
+.card h3{
+    color:#666;
+    font-size:14px;
+    margin-bottom:10px;
 }
 
 .card strong{
-    display:block;
     font-size:25px;
-    margin-top:8px;
     color:#5427a8;
 }
 
@@ -117,16 +115,16 @@ h2{
     padding:20px;
     border-radius:10px;
     margin-bottom:20px;
-    box-shadow:0 2px 7px rgba(0,0,0,.06);
+    box-shadow:0 2px 8px #0001;
 }
 
 .form-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
     gap:12px;
 }
 
-input,select,textarea{
+input, select, textarea{
     width:100%;
     padding:11px;
     border:1px solid #ccc;
@@ -145,71 +143,71 @@ label{
 }
 
 .btn{
+    background:#5427a8;
+    color:white;
     border:0;
-    padding:11px 16px;
+    padding:11px 18px;
     border-radius:6px;
     cursor:pointer;
     margin-top:15px;
-    margin-right:5px;
 }
 
-.btn-primary{
-    background:#5427a8;
-    color:white;
+.btn:hover{
+    background:#3f1c82;
 }
 
-.btn-secondary{
-    background:#eee;
-    color:#333;
-}
-
-.btn-danger{
+.btn.red{
     background:#c62828;
-    color:white;
 }
 
-.btn-green{
-    background:#198754;
-    color:white;
+.btn.gray{
+    background:#666;
 }
 
 table{
     width:100%;
     border-collapse:collapse;
-    margin-top:15px;
-    background:white;
+    margin-top:20px;
 }
 
 th,td{
-    border-bottom:1px solid #eee;
-    padding:11px;
+    border:1px solid #ddd;
+    padding:10px;
     text-align:left;
-    font-size:14px;
 }
 
 th{
-    background:#f3eefc;
-    color:#5427a8;
+    background:#5427a8;
+    color:white;
+}
+
+tr:nth-child(even){
+    background:#f8f8f8;
+}
+
+.delete-btn{
+    background:#c62828;
+    color:white;
+    border:0;
+    padding:6px 10px;
+    border-radius:4px;
+    cursor:pointer;
+}
+
+.print-btn{
+    float:right;
+    background:#333;
+    color:white;
+    border:0;
+    padding:9px 15px;
+    border-radius:6px;
+    cursor:pointer;
 }
 
 .empty{
     text-align:center;
+    padding:20px;
     color:#777;
-    padding:25px;
-}
-
-.total-box{
-    background:#f3eefc;
-    padding:15px;
-    border-radius:7px;
-    margin-top:15px;
-}
-
-footer{
-    text-align:center;
-    padding:15px;
-    color:#777;
-    font-size:13px;
 }
 
 @media(max-width:700px){
@@ -221,16 +219,21 @@ footer{
         padding:15px;
     }
 
-    .sidebar button{
-        font-size:13px;
+    table{
+        font-size:12px;
     }
 }
 
 @media print{
+    body{
+        background:white;
+    }
+
     header,
     .sidebar,
-    .no-print,
-    footer{
+    .btn,
+    .print-btn,
+    form{
         display:none !important;
     }
 
@@ -242,16 +245,16 @@ footer{
         display:none !important;
     }
 
-    .section.print-section{
+    .section.printing{
         display:block !important;
-    }
-
-    body{
-        background:white;
     }
 
     .panel{
         box-shadow:none;
+    }
+
+    table{
+        font-size:11px;
     }
 }
 </style>
@@ -261,51 +264,27 @@ footer{
 
 <header>
     <h1>Fana Tsehay Pharmaceutical PLC</h1>
-    <span>Company Management System</span>
+    <span>Business Management System</span>
 </header>
 
-<div class="container">
+<div class="layout">
 
 <div class="sidebar">
 
-    <button class="active" onclick="showSection('dashboard',this)">
-        🏠 Dashboard
-    </button>
-
-    <button onclick="showSection('customers',this)">
-        👥 Customers
-    </button>
-
-    <button onclick="showSection('sales',this)">
-        🧾 Sales / Invoices
-    </button>
-
-    <button onclick="showSection('payments',this)">
-        💰 Payments
-    </button>
-
-    <button onclick="showSection('inventory',this)">
-        📦 Inventory
-    </button>
-
-    <button onclick="showSection('expenses',this)">
-        💸 Expenses
-    </button>
-
-    <button onclick="showSection('reports',this)">
-        📊 Reports
-    </button>
-
-    <button onclick="showSection('backup',this)">
-        💾 Backup
-    </button>
+<button class="active" onclick="showSection('dashboard',this)">🏠 Dashboard</button>
+<button onclick="showSection('customers',this)">👥 Customers</button>
+<button onclick="showSection('sales',this)">🧾 Sales & Invoices</button>
+<button onclick="showSection('finance',this)">💰 Finance</button>
+<button onclick="showSection('inventory',this)">📦 Inventory</button>
+<button onclick="showSection('imports',this)">🚢 Imports</button>
+<button onclick="showSection('suppliers',this)">🏢 Suppliers</button>
+<button onclick="showSection('notes',this)">📝 Notes</button>
 
 </div>
 
 <div class="main">
 
 <!-- DASHBOARD -->
-
 <section id="dashboard" class="section active">
 
 <h2>Dashboard</h2>
@@ -313,142 +292,105 @@ footer{
 <div class="cards">
 
 <div class="card">
-<small>Total Sales</small>
-<strong id="dashSales">0 ETB</strong>
+<h3>Total Sales</h3>
+<strong id="totalSales">0 ETB</strong>
 </div>
 
 <div class="card">
-<small>Money Received</small>
-<strong id="dashPayments">0 ETB</strong>
+<h3>Money Received</h3>
+<strong id="moneyReceived">0 ETB</strong>
 </div>
 
 <div class="card">
-<small>Outstanding Credit</small>
-<strong id="dashCredit">0 ETB</strong>
+<h3>Outstanding Credit</h3>
+<strong id="credit">0 ETB</strong>
 </div>
 
 <div class="card">
-<small>Inventory Value</small>
-<strong id="dashInventory">0 ETB</strong>
-</div>
-
-<div class="card">
-<small>Customers</small>
-<strong id="dashCustomers">0</strong>
-</div>
-
-<div class="card">
-<small>Products</small>
-<strong id="dashProducts">0</strong>
+<h3>Expenses</h3>
+<strong id="expenses">0 ETB</strong>
 </div>
 
 </div>
 
 <div class="panel">
-
-<h3>Quick Actions</h3>
-
-<button class="btn btn-primary"
-onclick="showSection('customers')">
-+ Add Customer
-</button>
-
-<button class="btn btn-primary"
-onclick="showSection('sales')">
-+ New Sale
-</button>
-
-<button class="btn btn-primary"
-onclick="showSection('inventory')">
-+ Add Product
-</button>
-
-<button class="btn btn-primary"
-onclick="showSection('expenses')">
-+ Add Expense
-</button>
-
+<h3>Business Summary</h3>
+<p style="margin-top:10px">
+Use the menu on the left to record customers, sales, payments,
+expenses, inventory, imports, suppliers and notes.
+</p>
 </div>
 
 </section>
 
 
 <!-- CUSTOMERS -->
-
 <section id="customers" class="section">
 
 <h2>Customers</h2>
 
+<button class="print-btn" onclick="printSection('customers')">🖨 Print</button>
+
 <div class="panel">
 
-<h3>Add Customer</h3>
+<form id="customerForm">
 
 <div class="form-grid">
 
 <div>
-<label>Customer / Company Name</label>
-<input id="customerName" placeholder="Example: ABC Pharmacy">
+<label>Customer / Company</label>
+<input id="customerName" required>
 </div>
 
 <div>
 <label>Phone</label>
-<input id="customerPhone" placeholder="Phone number">
+<input id="customerPhone">
 </div>
 
 <div>
-<label>Customer Type</label>
+<label>Address</label>
+<input id="customerAddress">
+</div>
 
+<div>
+<label>Type</label>
 <select id="customerType">
-
 <option>Pharmacy</option>
 <option>Hospital</option>
 <option>Clinic</option>
 <option>Distributor</option>
 <option>Other</option>
-
 </select>
-
 </div>
 
 <div>
-<label>Address</label>
-<input id="customerAddress" placeholder="Address">
+<label>Notes</label>
+<textarea id="customerNotes"></textarea>
 </div>
 
 </div>
 
-<button class="btn btn-primary" onclick="addCustomer()">
-Save Customer
-</button>
+<button class="btn">Add Customer</button>
+
+</form>
 
 </div>
-
 
 <div class="panel">
 
-<h3>Customer List</h3>
-
-<button class="btn btn-secondary no-print"
-onclick="printSection('customers')">
-🖨 Print Customers
-</button>
-
 <table>
-
 <thead>
-
 <tr>
-<th>Name</th>
+<th>Customer</th>
 <th>Phone</th>
-<th>Type</th>
 <th>Address</th>
+<th>Type</th>
+<th>Notes</th>
 <th>Action</th>
 </tr>
-
 </thead>
 
 <tbody id="customerTable"></tbody>
-
 </table>
 
 </div>
@@ -457,60 +399,72 @@ onclick="printSection('customers')">
 
 
 <!-- SALES -->
-
 <section id="sales" class="section">
 
-<h2>Sales / Invoices</h2>
+<h2>Sales & Invoices</h2>
+
+<button class="print-btn" onclick="printSection('sales')">🖨 Print</button>
 
 <div class="panel">
 
-<h3>New Sale</h3>
+<form id="salesForm">
 
 <div class="form-grid">
 
 <div>
 <label>Invoice Number</label>
-<input id="invoiceNumber" placeholder="INV-001">
+<input id="invoiceNumber" required>
 </div>
 
 <div>
 <label>Customer</label>
-<select id="saleCustomer"></select>
+<input id="saleCustomer" required>
 </div>
 
 <div>
 <label>Product</label>
-<select id="saleProduct"></select>
+<input id="saleProduct" required>
 </div>
 
 <div>
 <label>Quantity</label>
-<input id="saleQty" type="number" min="1" value="1">
+<input id="saleQuantity" type="number" min="1" required>
 </div>
 
 <div>
 <label>Unit Price</label>
-<input id="salePrice" type="number" min="0" placeholder="0">
+<input id="salePrice" type="number" min="0" required>
 </div>
 
 <div>
 <label>Amount Paid</label>
-<input id="salePaid" type="number" min="0" placeholder="0">
+<input id="salePaid" type="number" min="0" value="0">
 </div>
 
 <div>
 <label>Payment Method</label>
-
 <select id="saleMethod">
-
 <option>Cash</option>
 <option>Bank Transfer</option>
 <option>Mobile Money</option>
 <option>Credit</option>
 <option>Mixed Payment</option>
-
 </select>
+</div>
 
+<div>
+<label>Bank Type</label>
+<select id="saleBank">
+<option>Not Applicable</option>
+<option>CBE</option>
+<option>Dashen Bank</option>
+<option>Awash Bank</option>
+<option>Bank of Abyssinia</option>
+<option>Commercial Bank of Ethiopia</option>
+<option>Other Bank</option>
+<option>Telebirr</option>
+<option>Other Mobile Money</option>
+</select>
 </div>
 
 <div>
@@ -518,28 +472,23 @@ onclick="printSection('customers')">
 <input id="saleDueDate" type="date">
 </div>
 
+<div>
+<label>Notes</label>
+<textarea id="saleNotes"></textarea>
 </div>
 
-<button class="btn btn-primary" onclick="addSale()">
-Save Sale
-</button>
-
 </div>
 
+<button class="btn">Add Sale</button>
+
+</form>
+
+</div>
 
 <div class="panel">
 
-<h3>Sales Records</h3>
-
-<button class="btn btn-secondary no-print"
-onclick="printSection('sales')">
-🖨 Print Sales
-</button>
-
 <table>
-
 <thead>
-
 <tr>
 <th>Invoice</th>
 <th>Customer</th>
@@ -548,14 +497,15 @@ onclick="printSection('sales')">
 <th>Total</th>
 <th>Paid</th>
 <th>Credit</th>
-<th>Date</th>
+<th>Payment</th>
+<th>Bank</th>
+<th>Due Date</th>
+<th>Notes</th>
 <th>Action</th>
 </tr>
-
 </thead>
 
 <tbody id="salesTable"></tbody>
-
 </table>
 
 </div>
@@ -563,80 +513,86 @@ onclick="printSection('sales')">
 </section>
 
 
-<!-- PAYMENTS -->
+<!-- FINANCE -->
+<section id="finance" class="section">
 
-<section id="payments" class="section">
+<h2>Finance</h2>
 
-<h2>Payments</h2>
+<button class="print-btn" onclick="printSection('finance')">🖨 Print</button>
 
 <div class="panel">
 
-<h3>Record Payment</h3>
+<form id="financeForm">
 
 <div class="form-grid">
 
 <div>
-<label>Invoice Number</label>
-<input id="paymentInvoice" placeholder="INV-001">
+<label>Type</label>
+<select id="financeType">
+<option>Income</option>
+<option>Expense</option>
+</select>
 </div>
 
 <div>
-<label>Customer</label>
-<input id="paymentCustomer" placeholder="Customer name">
+<label>Description</label>
+<input id="financeDescription" required>
 </div>
 
 <div>
 <label>Amount</label>
-<input id="paymentAmount" type="number" min="0">
+<input id="financeAmount" type="number" min="0" required>
 </div>
 
 <div>
-<label>Payment Method</label>
-
-<select id="paymentMethod">
-
+<label>Bank / Payment Type</label>
+<select id="financeBank">
 <option>Cash</option>
-<option>Bank Transfer</option>
-<option>Mobile Money</option>
-
+<option>CBE</option>
+<option>Dashen Bank</option>
+<option>Awash Bank</option>
+<option>Bank of Abyssinia</option>
+<option>Commercial Bank of Ethiopia</option>
+<option>Other Bank</option>
+<option>Telebirr</option>
+<option>Other Mobile Money</option>
 </select>
+</div>
 
+<div>
+<label>Date</label>
+<input id="financeDate" type="date">
+</div>
+
+<div>
+<label>Notes</label>
+<textarea id="financeNotes"></textarea>
 </div>
 
 </div>
 
-<button class="btn btn-green" onclick="addPayment()">
-Record Payment
-</button>
+<button class="btn">Add Transaction</button>
+
+</form>
 
 </div>
 
 <div class="panel">
 
-<h3>Payment History</h3>
-
-<button class="btn btn-secondary no-print"
-onclick="printSection('payments')">
-🖨 Print Payments
-</button>
-
 <table>
-
 <thead>
-
 <tr>
-<th>Date</th>
-<th>Invoice</th>
-<th>Customer</th>
+<th>Type</th>
+<th>Description</th>
 <th>Amount</th>
-<th>Method</th>
+<th>Bank / Payment</th>
+<th>Date</th>
+<th>Notes</th>
 <th>Action</th>
 </tr>
-
 </thead>
 
-<tbody id="paymentTable"></tbody>
-
+<tbody id="financeTable"></tbody>
 </table>
 
 </div>
@@ -645,84 +601,73 @@ onclick="printSection('payments')">
 
 
 <!-- INVENTORY -->
-
 <section id="inventory" class="section">
 
 <h2>Inventory</h2>
 
+<button class="print-btn" onclick="printSection('inventory')">🖨 Print</button>
+
 <div class="panel">
 
-<h3>Add Product</h3>
+<form id="inventoryForm">
 
 <div class="form-grid">
 
 <div>
-<label>Product Name</label>
-<input id="productName" placeholder="Medicine name">
+<label>Product</label>
+<input id="inventoryProduct" required>
 </div>
 
 <div>
 <label>Batch Number</label>
-<input id="productBatch" placeholder="Batch">
+<input id="inventoryBatch">
 </div>
 
 <div>
 <label>Quantity</label>
-<input id="productQty" type="number" min="0">
+<input id="inventoryQuantity" type="number" required>
 </div>
 
 <div>
 <label>Unit Cost</label>
-<input id="productCost" type="number" min="0">
-</div>
-
-<div>
-<label>Selling Price</label>
-<input id="productPrice" type="number" min="0">
+<input id="inventoryCost" type="number" required>
 </div>
 
 <div>
 <label>Expiry Date</label>
-<input id="productExpiry" type="date">
+<input id="inventoryExpiry" type="date">
+</div>
+
+<div>
+<label>Notes</label>
+<textarea id="inventoryNotes"></textarea>
 </div>
 
 </div>
 
-<button class="btn btn-primary" onclick="addProduct()">
-Save Product
-</button>
+<button class="btn">Add Product</button>
+
+</form>
 
 </div>
-
 
 <div class="panel">
 
-<h3>Products</h3>
-
-<button class="btn btn-secondary no-print"
-onclick="printSection('inventory')">
-🖨 Print Inventory
-</button>
-
 <table>
-
 <thead>
-
 <tr>
 <th>Product</th>
 <th>Batch</th>
 <th>Quantity</th>
-<th>Cost</th>
-<th>Selling Price</th>
+<th>Unit Cost</th>
+<th>Total Value</th>
 <th>Expiry</th>
-<th>Value</th>
+<th>Notes</th>
 <th>Action</th>
 </tr>
-
 </thead>
 
 <tbody id="inventoryTable"></tbody>
-
 </table>
 
 </div>
@@ -730,84 +675,111 @@ onclick="printSection('inventory')">
 </section>
 
 
-<!-- EXPENSES -->
+<!-- IMPORTS -->
+<section id="imports" class="section">
 
-<section id="expenses" class="section">
+<h2>Imports</h2>
 
-<h2>Expenses</h2>
+<button class="print-btn" onclick="printSection('imports')">🖨 Print</button>
 
 <div class="panel">
 
-<h3>Add Expense</h3>
+<form id="importsForm">
 
 <div class="form-grid">
 
 <div>
-<label>Expense Description</label>
-<input id="expenseName" placeholder="Example: Transport">
+<label>Supplier</label>
+<input id="importSupplier" required>
 </div>
 
 <div>
-<label>Category</label>
+<label>Product</label>
+<input id="importProduct" required>
+</div>
 
-<select id="expenseCategory">
+<div>
+<label>Quantity</label>
+<input id="importQuantity" type="number">
+</div>
 
-<option>Transport</option>
-<option>Salary</option>
-<option>Rent</option>
-<option>Utilities</option>
-<option>Office</option>
-<option>Import</option>
-<option>Other</option>
+<div>
+<label>Product Cost</label>
+<input id="importProductCost" type="number">
+</div>
 
+<div>
+<label>Shipping Cost</label>
+<input id="importShipping" type="number">
+</div>
+
+<div>
+<label>Customs Cost</label>
+<input id="importCustoms" type="number">
+</div>
+
+<div>
+<label>Other Cost</label>
+<input id="importOther" type="number">
+</div>
+
+<div>
+<label>Payment Status</label>
+<select id="importStatus">
+<option>Paid</option>
+<option>Partially Paid</option>
+<option>Credit</option>
 </select>
-
 </div>
 
 <div>
-<label>Amount</label>
-<input id="expenseAmount" type="number" min="0">
+<label>Bank Type</label>
+<select id="importBank">
+<option>Cash</option>
+<option>CBE</option>
+<option>Dashen Bank</option>
+<option>Awash Bank</option>
+<option>Bank of Abyssinia</option>
+<option>Other Bank</option>
+<option>Telebirr</option>
+<option>Other</option>
+</select>
 </div>
 
 <div>
-<label>Date</label>
-<input id="expenseDate" type="date">
+<label>Notes</label>
+<textarea id="importNotes"></textarea>
 </div>
 
 </div>
 
-<button class="btn btn-primary" onclick="addExpense()">
-Save Expense
-</button>
+<button class="btn">Add Import</button>
+
+</form>
 
 </div>
-
 
 <div class="panel">
 
-<h3>Expense Records</h3>
-
-<button class="btn btn-secondary no-print"
-onclick="printSection('expenses')">
-🖨 Print Expenses
-</button>
-
 <table>
-
 <thead>
-
 <tr>
-<th>Date</th>
-<th>Description</th>
-<th>Category</th>
-<th>Amount</th>
+<th>Supplier</th>
+<th>Product</th>
+<th>Qty</th>
+<th>Product Cost</th>
+<th>Shipping</th>
+<th>Customs</th>
+<th>Other</th>
+<th>Total</th>
+<th>Status</th>
+<th>Bank</th>
+<th>Notes</th>
 <th>Action</th>
 </tr>
-
 </thead>
 
-<tbody id="expenseTable"></tbody>
-
+<tbody id="importsTable"></tbody>
 </table>
 
 </div>
@@ -815,115 +787,128 @@ onclick="printSection('expenses')">
 </section>
 
 
-<!-- REPORTS -->
+<!-- SUPPLIERS -->
+<section id="suppliers" class="section">
 
-<section id="reports" class="section">
+<h2>Suppliers</h2>
 
-<h2>Reports</h2>
+<button class="print-btn" onclick="printSection('suppliers')">🖨 Print</button>
 
 <div class="panel">
 
-<h3>Financial Summary</h3>
+<form id="supplierForm">
 
-<div class="total-box">
+<div class="form-grid">
 
-<p>Total Sales:
-<strong id="reportSales">0 ETB</strong>
-</p>
+<div>
+<label>Supplier Name</label>
+<input id="supplierName" required>
+</div>
 
-<br>
+<div>
+<label>Phone</label>
+<input id="supplierPhone">
+</div>
 
-<p>Total Payments:
-<strong id="reportPayments">0 ETB</strong>
-</p>
+<div>
+<label>Address</label>
+<input id="supplierAddress">
+</div>
 
-<br>
+<div>
+<label>Amount Owed</label>
+<input id="supplierOwed" type="number" value="0">
+</div>
 
-<p>Total Credit:
-<strong id="reportCredit">0 ETB</strong>
-</p>
-
-<br>
-
-<p>Total Expenses:
-<strong id="reportExpenses">0 ETB</strong>
-</p>
-
-<br>
-
-<p>Net Cash:
-<strong id="reportNet">0 ETB</strong>
-</p>
+<div>
+<label>Notes</label>
+<textarea id="supplierNotes"></textarea>
+</div>
 
 </div>
 
-<button class="btn btn-primary no-print"
-onclick="printSection('reports')">
-🖨 Print Report
-</button>
+<button class="btn">Add Supplier</button>
+
+</form>
+
+</div>
+
+<div class="panel">
+
+<table>
+<thead>
+<tr>
+<th>Supplier</th>
+<th>Phone</th>
+<th>Address</th>
+<th>Amount Owed</th>
+<th>Notes</th>
+<th>Action</th>
+</tr>
+</thead>
+
+<tbody id="supplierTable"></tbody>
+</table>
 
 </div>
 
 </section>
 
 
-<!-- BACKUP -->
+<!-- NOTES -->
+<section id="notes" class="section">
 
-<section id="backup" class="section">
+<h2>Notes</h2>
 
-<h2>Backup & Restore</h2>
+<button class="print-btn" onclick="printSection('notes')">🖨 Print</button>
 
 <div class="panel">
 
-<h3>Protect Your Company Records</h3>
+<form id="noteForm">
 
-<p>
-Your information is stored in this browser.
-You should regularly download a backup.
-</p>
+<div class="form-grid">
 
-<button class="btn btn-primary"
-onclick="backupData()">
-⬇ Download Backup
-</button>
+<div>
+<label>Title</label>
+<input id="noteTitle" required>
+</div>
 
-<br>
+<div>
+<label>Date</label>
+<input id="noteDate" type="date">
+</div>
 
-<input
-type="file"
-id="restoreFile"
-accept=".json"
-style="margin-top:20px"
->
+<div style="grid-column:1/-1">
+<label>Note</label>
+<textarea id="noteText" style="min-height:150px" required></textarea>
+</div>
 
-<button class="btn btn-green"
-onclick="restoreData()">
-Restore Backup
-</button>
+</div>
+
+<button class="btn">Save Note</button>
+
+</form>
 
 </div>
 
 <div class="panel">
 
-<h3>Print Everything</h3>
+<table>
+<thead>
+<tr>
+<th>Title</th>
+<th>Date</th>
+<th>Note</th>
+<th>Action</th>
+</tr>
+</thead>
 
-<p>
-Use this to print the current records.
-</p>
-
-<button class="btn btn-secondary"
-onclick="printCurrentSection()">
-🖨 Print Current Section
-</button>
+<tbody id="notesTable"></tbody>
+</table>
 
 </div>
 
 </section>
-
-
-<footer>
-Fana Tsehay Pharmaceutical PLC — Management System
-</footer>
 
 </div>
 </div>
@@ -931,906 +916,569 @@ Fana Tsehay Pharmaceutical PLC — Management System
 
 <script>
 
-let customers =
-JSON.parse(localStorage.getItem("customers") || "[]");
+/* =========================
+   DATA STORAGE
+========================= */
 
-let sales =
-JSON.parse(localStorage.getItem("sales") || "[]");
-
-let payments =
-JSON.parse(localStorage.getItem("payments") || "[]");
-
-let products =
-JSON.parse(localStorage.getItem("products") || "[]");
-
-let expenses =
-JSON.parse(localStorage.getItem("expenses") || "[]");
+let customers = JSON.parse(localStorage.getItem("customers") || "[]");
+let sales = JSON.parse(localStorage.getItem("sales") || "[]");
+let finance = JSON.parse(localStorage.getItem("finance") || "[]");
+let inventory = JSON.parse(localStorage.getItem("inventory") || "[]");
+let imports = JSON.parse(localStorage.getItem("imports") || "[]");
+let suppliers = JSON.parse(localStorage.getItem("suppliers") || "[]");
+let notes = JSON.parse(localStorage.getItem("notes") || "[]");
 
 
-function saveAll(){
-
-localStorage.setItem("customers",JSON.stringify(customers));
-localStorage.setItem("sales",JSON.stringify(sales));
-localStorage.setItem("payments",JSON.stringify(payments));
-localStorage.setItem("products",JSON.stringify(products));
-localStorage.setItem("expenses",JSON.stringify(expenses));
-
+function saveData(){
+    localStorage.setItem("customers",JSON.stringify(customers));
+    localStorage.setItem("sales",JSON.stringify(sales));
+    localStorage.setItem("finance",JSON.stringify(finance));
+    localStorage.setItem("inventory",JSON.stringify(inventory));
+    localStorage.setItem("imports",JSON.stringify(imports));
+    localStorage.setItem("suppliers",JSON.stringify(suppliers));
+    localStorage.setItem("notes",JSON.stringify(notes));
 }
 
 
-function money(number){
-
-return Number(number || 0).toLocaleString(
-"en-US",
-{
-minimumFractionDigits:2,
-maximumFractionDigits:2
-}
-) + " ETB";
-
-}
-
+/* =========================
+   NAVIGATION
+========================= */
 
 function showSection(id,button){
 
-document.querySelectorAll(".section")
-.forEach(section=>{
-section.classList.remove("active");
-section.classList.remove("print-section");
+    document.querySelectorAll(".section").forEach(section=>{
+        section.classList.remove("active");
+    });
+
+    document.getElementById(id).classList.add("active");
+
+    document.querySelectorAll(".sidebar button").forEach(btn=>{
+        btn.classList.remove("active");
+    });
+
+    button.classList.add("active");
+}
+
+
+/* =========================
+   PRINT
+========================= */
+
+function printSection(id){
+
+    document.querySelectorAll(".section").forEach(section=>{
+        section.classList.remove("printing");
+    });
+
+    document.getElementById(id).classList.add("printing");
+
+    window.print();
+
+    setTimeout(()=>{
+        document.getElementById(id).classList.remove("printing");
+        document.getElementById(id).classList.add("active");
+    },500);
+}
+
+
+/* =========================
+   CUSTOMERS
+========================= */
+
+document.getElementById("customerForm").addEventListener("submit",function(e){
+
+    e.preventDefault();
+
+    customers.push({
+        name:customerName.value,
+        phone:customerPhone.value,
+        address:customerAddress.value,
+        type:customerType.value,
+        notes:customerNotes.value
+    });
+
+    saveData();
+    this.reset();
+    renderCustomers();
+
 });
-
-document.getElementById(id)
-.classList.add("active");
-
-document.querySelectorAll(".sidebar button")
-.forEach(btn=>{
-btn.classList.remove("active");
-});
-
-if(button){
-button.classList.add("active");
-}
-
-updateAll();
-
-}
-
-
-function addCustomer(){
-
-let name =
-document.getElementById("customerName").value.trim();
-
-let phone =
-document.getElementById("customerPhone").value.trim();
-
-let type =
-document.getElementById("customerType").value;
-
-let address =
-document.getElementById("customerAddress").value.trim();
-
-if(!name){
-
-alert("Please enter the customer name.");
-return;
-
-}
-
-customers.push({
-
-id:Date.now(),
-name:name,
-phone:phone,
-type:type,
-address:address
-
-});
-
-saveAll();
-
-document.getElementById("customerName").value="";
-document.getElementById("customerPhone").value="";
-document.getElementById("customerAddress").value="";
-
-renderCustomers();
-updateAll();
-
-alert("Customer saved successfully.");
-
-}
-
-
-function deleteCustomer(id){
-
-if(!confirm("Delete this customer?")) return;
-
-customers =
-customers.filter(c=>c.id!==id);
-
-saveAll();
-
-updateAll();
-
-}
 
 
 function renderCustomers(){
 
-let table =
-document.getElementById("customerTable");
+    customerTable.innerHTML="";
 
-if(customers.length===0){
+    customers.forEach((c,i)=>{
 
-table.innerHTML=
-'<tr><td colspan="5" class="empty">No customers yet.</td></tr>';
+        customerTable.innerHTML+=`
+        <tr>
+        <td>${c.name}</td>
+        <td>${c.phone}</td>
+        <td>${c.address}</td>
+        <td>${c.type}</td>
+        <td>${c.notes}</td>
+        <td>
+        <button class="delete-btn" onclick="deleteCustomer(${i})">Delete</button>
+        </td>
+        </tr>
+        `;
 
-return;
-
+    });
 }
 
-table.innerHTML =
-customers.map(c=>`
 
-<tr>
+function deleteCustomer(i){
 
-<td>${escapeHTML(c.name)}</td>
-
-<td>${escapeHTML(c.phone)}</td>
-
-<td>${escapeHTML(c.type)}</td>
-
-<td>${escapeHTML(c.address)}</td>
-
-<td>
-
-<button class="btn btn-danger"
-onclick="deleteCustomer(${c.id})">
-Delete
-</button>
-
-</td>
-
-</tr>
-
-`).join("");
+    if(confirm("Delete this customer?")){
+        customers.splice(i,1);
+        saveData();
+        renderCustomers();
+    }
 
 }
 
 
-function addProduct(){
+/* =========================
+   SALES
+========================= */
 
-let name =
-document.getElementById("productName").value.trim();
+document.getElementById("salesForm").addEventListener("submit",function(e){
 
-let batch =
-document.getElementById("productBatch").value.trim();
+    e.preventDefault();
 
-let qty =
-Number(document.getElementById("productQty").value);
+    let quantity=Number(saleQuantity.value);
+    let price=Number(salePrice.value);
+    let total=quantity*price;
+    let paid=Number(salePaid.value);
+    let credit=Math.max(total-paid,0);
 
-let cost =
-Number(document.getElementById("productCost").value);
+    sales.push({
+        invoice:invoiceNumber.value,
+        customer:saleCustomer.value,
+        product:saleProduct.value,
+        quantity:quantity,
+        total:total,
+        paid:paid,
+        credit:credit,
+        method:saleMethod.value,
+        bank:saleBank.value,
+        dueDate:saleDueDate.value,
+        notes:saleNotes.value
+    });
 
-let price =
-Number(document.getElementById("productPrice").value);
-
-let expiry =
-document.getElementById("productExpiry").value;
-
-if(!name){
-
-alert("Please enter the product name.");
-return;
-
-}
-
-products.push({
-
-id:Date.now(),
-name:name,
-batch:batch,
-qty:qty,
-cost:cost,
-price:price,
-expiry:expiry
+    saveData();
+    this.reset();
+    renderSales();
+    updateDashboard();
 
 });
-
-saveAll();
-
-document.getElementById("productName").value="";
-document.getElementById("productBatch").value="";
-document.getElementById("productQty").value="";
-document.getElementById("productCost").value="";
-document.getElementById("productPrice").value="";
-document.getElementById("productExpiry").value="";
-
-renderProducts();
-updateAll();
-
-alert("Product saved successfully.");
-
-}
-
-
-function deleteProduct(id){
-
-if(!confirm("Delete this product?")) return;
-
-products =
-products.filter(p=>p.id!==id);
-
-saveAll();
-updateAll();
-
-}
-
-
-function renderProducts(){
-
-let table =
-document.getElementById("inventoryTable");
-
-if(products.length===0){
-
-table.innerHTML=
-'<tr><td colspan="8" class="empty">No products yet.</td></tr>';
-
-return;
-
-}
-
-table.innerHTML =
-products.map(p=>`
-
-<tr>
-
-<td>${escapeHTML(p.name)}</td>
-
-<td>${escapeHTML(p.batch)}</td>
-
-<td>${p.qty}</td>
-
-<td>${money(p.cost)}</td>
-
-<td>${money(p.price)}</td>
-
-<td>${p.expiry || "-"}</td>
-
-<td>${money(p.qty*p.cost)}</td>
-
-<td>
-
-<button class="btn btn-danger"
-onclick="deleteProduct(${p.id})">
-Delete
-</button>
-
-</td>
-
-</tr>
-
-`).join("");
-
-}
-
-
-function loadSaleOptions(){
-
-let customerSelect =
-document.getElementById("saleCustomer");
-
-customerSelect.innerHTML =
-'<option value="">Select customer</option>' +
-
-customers.map(c=>
-`<option value="${c.id}">
-${escapeHTML(c.name)}
-</option>`
-).join("");
-
-
-let productSelect =
-document.getElementById("saleProduct");
-
-productSelect.innerHTML =
-'<option value="">Select product</option>' +
-
-products.map(p=>
-`<option value="${p.id}">
-${escapeHTML(p.name)}
-</option>`
-).join("");
-
-}
-
-
-function addSale(){
-
-let invoice =
-document.getElementById("invoiceNumber").value.trim();
-
-let customerId =
-document.getElementById("saleCustomer").value;
-
-let productId =
-document.getElementById("saleProduct").value;
-
-let qty =
-Number(document.getElementById("saleQty").value);
-
-let price =
-Number(document.getElementById("salePrice").value);
-
-let paid =
-Number(document.getElementById("salePaid").value);
-
-let method =
-document.getElementById("saleMethod").value;
-
-let dueDate =
-document.getElementById("saleDueDate").value;
-
-if(!invoice || !customerId || !productId || qty<=0){
-
-alert("Please complete the sale information.");
-return;
-
-}
-
-let customer =
-customers.find(c=>c.id==customerId);
-
-let product =
-products.find(p=>p.id==productId);
-
-if(!customer || !product){
-
-alert("Customer or product not found.");
-return;
-
-}
-
-if(qty > product.qty){
-
-alert("Not enough stock available.");
-return;
-
-}
-
-let total =
-qty * price;
-
-if(paid > total){
-
-alert("Amount paid cannot be greater than total.");
-return;
-
-}
-
-let credit =
-total-paid;
-
-product.qty -= qty;
-
-sales.push({
-
-id:Date.now(),
-invoice:invoice,
-customer:customer.name,
-product:product.name,
-qty:qty,
-price:price,
-total:total,
-paid:paid,
-credit:credit,
-method:method,
-dueDate:dueDate,
-date:new Date().toISOString().split("T")[0]
-
-});
-
-saveAll();
-
-renderSales();
-renderProducts();
-updateAll();
-
-alert("Sale saved successfully.");
-
-}
-
-
-function deleteSale(id){
-
-if(!confirm("Delete this sale?")) return;
-
-sales =
-sales.filter(s=>s.id!==id);
-
-saveAll();
-updateAll();
-
-}
 
 
 function renderSales(){
 
-let table =
-document.getElementById("salesTable");
+    salesTable.innerHTML="";
 
-if(sales.length===0){
+    sales.forEach((s,i)=>{
 
-table.innerHTML=
-'<tr><td colspan="9" class="empty">No sales yet.</td></tr>';
+        salesTable.innerHTML+=`
+        <tr>
+        <td>${s.invoice}</td>
+        <td>${s.customer}</td>
+        <td>${s.product}</td>
+        <td>${s.quantity}</td>
+        <td>${money(s.total)}</td>
+        <td>${money(s.paid)}</td>
+        <td>${money(s.credit)}</td>
+        <td>${s.method}</td>
+        <td>${s.bank}</td>
+        <td>${s.dueDate || ""}</td>
+        <td>${s.notes}</td>
+        <td>
+        <button class="delete-btn" onclick="deleteSale(${i})">Delete</button>
+        </td>
+        </tr>
+        `;
 
-return;
-
-}
-
-table.innerHTML =
-sales.map(s=>`
-
-<tr>
-
-<td>${escapeHTML(s.invoice)}</td>
-
-<td>${escapeHTML(s.customer)}</td>
-
-<td>${escapeHTML(s.product)}</td>
-
-<td>${s.qty}</td>
-
-<td>${money(s.total)}</td>
-
-<td>${money(s.paid)}</td>
-
-<td>${money(s.credit)}</td>
-
-<td>${s.date}</td>
-
-<td>
-
-<button class="btn btn-danger"
-onclick="deleteSale(${s.id})">
-Delete
-</button>
-
-</td>
-
-</tr>
-
-`).join("");
+    });
 
 }
 
 
-function addPayment(){
+function deleteSale(i){
 
-let invoice =
-document.getElementById("paymentInvoice").value.trim();
-
-let customer =
-document.getElementById("paymentCustomer").value.trim();
-
-let amount =
-Number(document.getElementById("paymentAmount").value);
-
-let method =
-document.getElementById("paymentMethod").value;
-
-if(!amount || amount<=0){
-
-alert("Enter a payment amount.");
-return;
+    if(confirm("Delete this sale?")){
+        sales.splice(i,1);
+        saveData();
+        renderSales();
+        updateDashboard();
+    }
 
 }
 
-payments.push({
 
-id:Date.now(),
-invoice:invoice,
-customer:customer,
-amount:amount,
-method:method,
-date:new Date().toISOString().split("T")[0]
+/* =========================
+   FINANCE
+========================= */
+
+document.getElementById("financeForm").addEventListener("submit",function(e){
+
+    e.preventDefault();
+
+    finance.push({
+        type:financeType.value,
+        description:financeDescription.value,
+        amount:Number(financeAmount.value),
+        bank:financeBank.value,
+        date:financeDate.value,
+        notes:financeNotes.value
+    });
+
+    saveData();
+    this.reset();
+    renderFinance();
+    updateDashboard();
 
 });
 
-saveAll();
 
-document.getElementById("paymentInvoice").value="";
-document.getElementById("paymentCustomer").value="";
-document.getElementById("paymentAmount").value="";
+function renderFinance(){
 
-updateAll();
+    financeTable.innerHTML="";
 
-alert("Payment recorded.");
+    finance.forEach((f,i)=>{
 
-}
+        financeTable.innerHTML+=`
+        <tr>
+        <td>${f.type}</td>
+        <td>${f.description}</td>
+        <td>${money(f.amount)}</td>
+        <td>${f.bank}</td>
+        <td>${f.date || ""}</td>
+        <td>${f.notes}</td>
+        <td>
+        <button class="delete-btn" onclick="deleteFinance(${i})">Delete</button>
+        </td>
+        </tr>
+        `;
 
-
-function deletePayment(id){
-
-if(!confirm("Delete this payment?")) return;
-
-payments =
-payments.filter(p=>p.id!==id);
-
-saveAll();
-updateAll();
-
-}
-
-
-function renderPayments(){
-
-let table =
-document.getElementById("paymentTable");
-
-if(payments.length===0){
-
-table.innerHTML=
-'<tr><td colspan="6" class="empty">No payments yet.</td></tr>';
-
-return;
-
-}
-
-table.innerHTML =
-payments.map(p=>`
-
-<tr>
-
-<td>${p.date}</td>
-
-<td>${escapeHTML(p.invoice)}</td>
-
-<td>${escapeHTML(p.customer)}</td>
-
-<td>${money(p.amount)}</td>
-
-<td>${escapeHTML(p.method)}</td>
-
-<td>
-
-<button class="btn btn-danger"
-onclick="deletePayment(${p.id})">
-Delete
-</button>
-
-</td>
-
-</tr>
-
-`).join("");
+    });
 
 }
 
 
-function addExpense(){
+function deleteFinance(i){
 
-let name =
-document.getElementById("expenseName").value.trim();
-
-let category =
-document.getElementById("expenseCategory").value;
-
-let amount =
-Number(document.getElementById("expenseAmount").value);
-
-let date =
-document.getElementById("expenseDate").value ||
-new Date().toISOString().split("T")[0];
-
-if(!name || amount<=0){
-
-alert("Please enter the expense information.");
-return;
+    if(confirm("Delete this transaction?")){
+        finance.splice(i,1);
+        saveData();
+        renderFinance();
+        updateDashboard();
+    }
 
 }
 
-expenses.push({
 
-id:Date.now(),
-name:name,
-category:category,
-amount:amount,
-date:date
+/* =========================
+   INVENTORY
+========================= */
+
+document.getElementById("inventoryForm").addEventListener("submit",function(e){
+
+    e.preventDefault();
+
+    let quantity=Number(inventoryQuantity.value);
+    let cost=Number(inventoryCost.value);
+
+    inventory.push({
+        product:inventoryProduct.value,
+        batch:inventoryBatch.value,
+        quantity:quantity,
+        cost:cost,
+        total:quantity*cost,
+        expiry:inventoryExpiry.value,
+        notes:inventoryNotes.value
+    });
+
+    saveData();
+    this.reset();
+    renderInventory();
 
 });
 
-saveAll();
 
-document.getElementById("expenseName").value="";
-document.getElementById("expenseAmount").value="";
+function renderInventory(){
 
-updateAll();
+    inventoryTable.innerHTML="";
 
-alert("Expense saved.");
+    inventory.forEach((p,i)=>{
+
+        inventoryTable.innerHTML+=`
+        <tr>
+        <td>${p.product}</td>
+        <td>${p.batch}</td>
+        <td>${p.quantity}</td>
+        <td>${money(p.cost)}</td>
+        <td>${money(p.total)}</td>
+        <td>${p.expiry || ""}</td>
+        <td>${p.notes}</td>
+        <td>
+        <button class="delete-btn" onclick="deleteInventory(${i})">Delete</button>
+        </td>
+        </tr>
+        `;
+
+    });
+
+}
+
+
+function deleteInventory(i){
+
+    if(confirm("Delete this inventory item?")){
+        inventory.splice(i,1);
+        saveData();
+        renderInventory();
+    }
 
 }
 
 
-function deleteExpense(id){
+/* =========================
+   IMPORTS
+========================= */
 
-if(!confirm("Delete this expense?")) return;
+document.getElementById("importsForm").addEventListener("submit",function(e){
 
-expenses =
-expenses.filter(e=>e.id!==id);
+    e.preventDefault();
 
-saveAll();
-updateAll();
+    let productCost=Number(importProductCost.value)||0;
+    let shipping=Number(importShipping.value)||0;
+    let customs=Number(importCustoms.value)||0;
+    let other=Number(importOther.value)||0;
+
+    imports.push({
+        supplier:importSupplier.value,
+        product:importProduct.value,
+        quantity:Number(importQuantity.value)||0,
+        productCost:productCost,
+        shipping:shipping,
+        customs:customs,
+        other:other,
+        total:productCost+shipping+customs+other,
+        status:importStatus.value,
+        bank:importBank.value,
+        notes:importNotes.value
+    });
+
+    saveData();
+    this.reset();
+    renderImports();
+
+});
+
+
+function renderImports(){
+
+    importsTable.innerHTML="";
+
+    imports.forEach((x,i)=>{
+
+        importsTable.innerHTML+=`
+        <tr>
+        <td>${x.supplier}</td>
+        <td>${x.product}</td>
+        <td>${x.quantity}</td>
+        <td>${money(x.productCost)}</td>
+        <td>${money(x.shipping)}</td>
+        <td>${money(x.customs)}</td>
+        <td>${money(x.other)}</td>
+        <td>${money(x.total)}</td>
+        <td>${x.status}</td>
+        <td>${x.bank}</td>
+        <td>${x.notes}</td>
+        <td>
+        <button class="delete-btn" onclick="deleteImport(${i})">Delete</button>
+        </td>
+        </tr>
+        `;
+
+    });
 
 }
 
 
-function renderExpenses(){
+function deleteImport(i){
 
-let table =
-document.getElementById("expenseTable");
-
-if(expenses.length===0){
-
-table.innerHTML=
-'<tr><td colspan="5" class="empty">No expenses yet.</td></tr>';
-
-return;
+    if(confirm("Delete this import?")){
+        imports.splice(i,1);
+        saveData();
+        renderImports();
+    }
 
 }
 
-table.innerHTML =
-expenses.map(e=>`
 
-<tr>
+/* =========================
+   SUPPLIERS
+========================= */
 
-<td>${e.date}</td>
+document.getElementById("supplierForm").addEventListener("submit",function(e){
 
-<td>${escapeHTML(e.name)}</td>
+    e.preventDefault();
 
-<td>${escapeHTML(e.category)}</td>
+    suppliers.push({
+        name:supplierName.value,
+        phone:supplierPhone.value,
+        address:supplierAddress.value,
+        owed:Number(supplierOwed.value)||0,
+        notes:supplierNotes.value
+    });
 
-<td>${money(e.amount)}</td>
+    saveData();
+    this.reset();
+    renderSuppliers();
 
-<td>
+});
 
-<button class="btn btn-danger"
-onclick="deleteExpense(${e.id})">
-Delete
-</button>
 
-</td>
+function renderSuppliers(){
 
-</tr>
+    supplierTable.innerHTML="";
 
-`).join("");
+    suppliers.forEach((s,i)=>{
+
+        supplierTable.innerHTML+=`
+        <tr>
+        <td>${s.name}</td>
+        <td>${s.phone}</td>
+        <td>${s.address}</td>
+        <td>${money(s.owed)}</td>
+        <td>${s.notes}</td>
+        <td>
+        <button class="delete-btn" onclick="deleteSupplier(${i})">Delete</button>
+        </td>
+        </tr>
+        `;
+
+    });
 
 }
 
+
+function deleteSupplier(i){
+
+    if(confirm("Delete this supplier?")){
+        suppliers.splice(i,1);
+        saveData();
+        renderSuppliers();
+    }
+
+}
+
+
+/* =========================
+   NOTES
+========================= */
+
+document.getElementById("noteForm").addEventListener("submit",function(e){
+
+    e.preventDefault();
+
+    notes.push({
+        title:noteTitle.value,
+        date:noteDate.value,
+        text:noteText.value
+    });
+
+    saveData();
+    this.reset();
+    renderNotes();
+
+});
+
+
+function renderNotes(){
+
+    notesTable.innerHTML="";
+
+    notes.forEach((n,i)=>{
+
+        notesTable.innerHTML+=`
+        <tr>
+        <td>${n.title}</td>
+        <td>${n.date || ""}</td>
+        <td>${n.text}</td>
+        <td>
+        <button class="delete-btn" onclick="deleteNote(${i})">Delete</button>
+        </td>
+        </tr>
+        `;
+
+    });
+
+}
+
+
+function deleteNote(i){
+
+    if(confirm("Delete this note?")){
+        notes.splice(i,1);
+        saveData();
+        renderNotes();
+    }
+
+}
+
+
+/* =========================
+   DASHBOARD
+========================= */
 
 function updateDashboard(){
 
-let totalSales =
-sales.reduce((sum,s)=>sum+Number(s.total),0);
+    let totalSales=sales.reduce((sum,s)=>sum+s.total,0);
 
-let totalPayments =
-payments.reduce((sum,p)=>sum+Number(p.amount),0);
+    let received=sales.reduce((sum,s)=>sum+s.paid,0);
 
-let salePaid =
-sales.reduce((sum,s)=>sum+Number(s.paid),0);
+    let credit=sales.reduce((sum,s)=>sum+s.credit,0);
 
-let totalCredit =
-sales.reduce((sum,s)=>sum+Number(s.credit),0);
+    let expenses=finance
+        .filter(f=>f.type==="Expense")
+        .reduce((sum,f)=>sum+f.amount,0);
 
-let inventory =
-products.reduce(
-(sum,p)=>sum+(Number(p.qty)*Number(p.cost)),
-0
-);
+    document.getElementById("totalSales").textContent=money(totalSales);
 
-let totalExpenses =
-expenses.reduce(
-(sum,e)=>sum+Number(e.amount),
-0
-);
+    document.getElementById("moneyReceived").textContent=money(received);
 
-document.getElementById("dashSales").textContent =
-money(totalSales);
+    document.getElementById("credit").textContent=money(credit);
 
-document.getElementById("dashPayments").textContent =
-money(totalPayments+salePaid);
-
-document.getElementById("dashCredit").textContent =
-money(totalCredit);
-
-document.getElementById("dashInventory").textContent =
-money(inventory);
-
-document.getElementById("dashCustomers").textContent =
-customers.length;
-
-document.getElementById("dashProducts").textContent =
-products.length;
+    document.getElementById("expenses").textContent=money(expenses);
+}
 
 
-document.getElementById("reportSales").textContent =
-money(totalSales);
+/* =========================
+   MONEY
+========================= */
 
-document.getElementById("reportPayments").textContent =
-money(totalPayments+salePaid);
+function money(number){
 
-document.getElementById("reportCredit").textContent =
-money(totalCredit);
-
-document.getElementById("reportExpenses").textContent =
-money(totalExpenses);
-
-document.getElementById("reportNet").textContent =
-money((totalPayments+salePaid)-totalExpenses);
+    return Number(number || 0).toLocaleString() + " ETB";
 
 }
 
 
-function updateAll(){
+/* =========================
+   LOAD EVERYTHING
+========================= */
 
 renderCustomers();
-renderProducts();
 renderSales();
-renderPayments();
-renderExpenses();
-
-loadSaleOptions();
-
+renderFinance();
+renderInventory();
+renderImports();
+renderSuppliers();
+renderNotes();
 updateDashboard();
-
-}
-
-
-function backupData(){
-
-let data={
-
-customers:customers,
-sales:sales,
-payments:payments,
-products:products,
-expenses:expenses
-
-};
-
-let blob =
-new Blob(
-[JSON.stringify(data,null,2)],
-{type:"application/json"}
-);
-
-let url =
-URL.createObjectURL(blob);
-
-let a =
-document.createElement("a");
-
-a.href=url;
-
-a.download =
-"Fana-Tsehay-Backup-" +
-new Date().toISOString().split("T")[0] +
-".json";
-
-a.click();
-
-URL.revokeObjectURL(url);
-
-}
-
-
-function restoreData(){
-
-let file =
-document.getElementById("restoreFile").files[0];
-
-if(!file){
-
-alert("Please choose a backup file first.");
-return;
-
-}
-
-let reader =
-new FileReader();
-
-reader.onload=function(e){
-
-try{
-
-let data =
-JSON.parse(e.target.result);
-
-customers =
-data.customers || [];
-
-sales =
-data.sales || [];
-
-payments =
-data.payments || [];
-
-products =
-data.products || [];
-
-expenses =
-data.expenses || [];
-
-saveAll();
-
-updateAll();
-
-alert("Backup restored successfully.");
-
-}
-
-catch(error){
-
-alert("This backup file is not valid.");
-
-}
-
-};
-
-reader.readAsText(file);
-
-}
-
-
-function printSection(id){
-
-document.querySelectorAll(".section")
-.forEach(section=>{
-section.classList.remove("print-section");
-});
-
-let section =
-document.getElementById(id);
-
-section.classList.add("print-section");
-
-window.print();
-
-setTimeout(()=>{
-section.classList.remove("print-section");
-},1000);
-
-}
-
-
-function printCurrentSection(){
-
-let current =
-document.querySelector(".section.active");
-
-if(current){
-
-printSection(current.id);
-
-}
-
-}
-
-
-function escapeHTML(value){
-
-return String(value || "")
-.replace(/&/g,"&amp;")
-.replace(/</g,"&lt;")
-.replace(/>/g,"&gt;")
-.replace(/"/g,"&quot;")
-.replace(/'/g,"&#039;");
-
-}
-
-
-updateAll();
 
 </script>
 
